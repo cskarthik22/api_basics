@@ -19,7 +19,7 @@ var lettersdata = {
 }
 */
 
-var data = JSON.parse(fs.readFileSync('build/db/letters.json'));
+var data = JSON.parse(fs.readFileSync('db/letters.json'));
 
 
 

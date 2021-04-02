@@ -4,7 +4,8 @@ const express = require('express');
 /* Build a webserver using express package */
 const app = express();
 /* webserver listeing on port 7000 */
-app.listen(8000, display);
+var port = process.env.PORT || 8000;
+app.listen(port, display);
 /* webserver serving static html content via webbrowser */
 app.use(express.static("public"));
 

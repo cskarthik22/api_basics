@@ -3,17 +3,18 @@ const express = require('express');
 
 /* Build a webserver using express package */
 const app = express();
+
+//if(process.env.NODE_ENV == 'production') {
+
+    app.use(express.static("client/build"));
+    const path = require('path');
+    app.get('*', (req,res) => {
+        res.sendFile(path.resolve(__dirname,'client','build','index.html'));
+    });
+//}
+/* webserver listeing on port 7000 */
 app.get("/search", (request,response) => {response.send("What you want to search?");});
 
-if(process.env.NODE_ENV == 'production') {
-
-app.use(express.static("client/build"));
-const path = require('path');
-app.get('*', (req,res) => {
-    res.sendFile(path.resolve(__dirname,'client','build','index.html'));
-});
-}
-/* webserver listeing on port 7000 */
 var port = process.env.PORT || 8000;
 app.listen(port, display);
 /* webserver serving static html content via webbrowser */

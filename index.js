@@ -3,12 +3,15 @@ const express = require('express');
 
 /* Build a webserver using express package */
 const app = express();
-app.use(express.static("build"));
+
+if(process.env.NODE_ENV == 'production') {
+
+app.use(express.static("client/build"));
 const path = require('path');
-const { ppid } = require('process');
-ppid.get('*', (req,res) => {
+app.get('*', (req,res) => {
     res.sendFile(path.resolve(__dirname,'client','build','index.html'));
 });
+}
 /* webserver listeing on port 7000 */
 var port = process.env.PORT || 8000;
 app.listen(port, display);

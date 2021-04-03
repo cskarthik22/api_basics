@@ -1,0 +1,29 @@
+.cart-item {
+    display: inline-flex;
+    margin: 20px 10px;
+}
+
+.cart-item .right-block {
+    padding: 0 20px;
+}
+
+.cart-item-actions {
+    margin-top: 20px;
+}
+
+.action-icons {
+    height: 25px;
+    width: 25px;
+    margin-right: 10px;
+}
+
+.action-icons:hover {
+    cursor: pointer;
+}
+
+.cart {
+    margin-top: 8rem;
+    margin-left: 8rem;
+    display: flex;
+    flex-direction: column;
+}

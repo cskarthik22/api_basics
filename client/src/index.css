@@ -1,3 +1,5 @@
+
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,4 +12,91 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+
+
+.header {
+  margin-left: 5rem;
+  margin-right: 3rem;
+  height: 100vh;
+  background: linear-gradient(to top, rgba(0,0,0,0.1), rgba(0,0,0,.2)),url(https://www.komando.com/wp-content/uploads/2018/11/dreamstime_m_87808373.jpg) center no-repeat;
+  background-size: cover;
+}
+
+#root-div {
+  width: 100%;
+  height: 100%;
+  background-color: #eee;
+  /*background: linear-gradient(to top, rgba(0,0,0,0.1), rgba(0,0,0,.2)),url(https://www.komando.com/wp-content/uploads/2018/11/dreamstime_m_87808373.jpg) center no-repeat;
+  background-size: cover;
+  background-color: darkseagreen; */
+}
+
+#container {
+  height: auto;
+  display: flex;
+  margin-left: 5rem;
+  margin-right: 3rem;
+  flex-direction: row;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  position: relative;
+  background-color: rgba(255,255,255,.1); 
+}
+
+#container div {
+  height: 400px;
+  width: 400px;
+  
+  /*background-color: rgba(245, 245, 220, 0.9);
+  background-color: rgba(255,255,255,.1);  */
+  padding: 10px;
+  border: 1px darkkhaki solid;
+  border-radius: 5px;
+  margin: 1px;
+  flex-grow: 1;
+  overflow: auto;
+  background-color: #333;
+  color: #fff;
+}
+
+.label-container {
+  margin-left: 0rem;
+  margin-top: .1rem;
+  padding: .5rem 0;
+  background-color: rgba(255,255,255,.1);
+  display: flex;
+  flex-direction:row;
+  flex-wrap: wrap;
+  justify-content:flex-start;
+  flex-basis: auto;
+}
+
+.label {
+  padding: .2em;
+  margin: .1em;
+  font-size: 3em;
+  background-color: rgba(0,0,0,.4);
+  color: #fff;
+  border-radius: 0rem;
+  flex-grow: 1;
+}
+
+.horizontal-line {
+  height: .2rem;
+  width: 2.5rem;
+  background-color:#deaa86;
+  margin-bottom: .6rem;
+}
+
+@media(max-width: 600px) {
+  .header {
+    margin-right: 0.2rem;
+  }
+  #container {
+    margin-right: 0.2rem;
+  }
+
+  
 }

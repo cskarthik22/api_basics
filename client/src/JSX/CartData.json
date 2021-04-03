@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "price": 999,
+        "title": "Phone",
+        "qty": 1,
+        "pic": "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-red-select-2020?wid=470&hei=556&fmt=jpeg&qlt=95&op_usm=0.5,0.5&.v=1604343703000"
+    },
+    {
+        "id": 2,
+        "price": 999,
+        "title": "Watch",
+        "qty": 3,
+        "pic": "https://i.ebayimg.com/images/g/Lx4AAOSwnSBehMa0/s-l300.jpg"
+    },
+    {
+        "id": 3,
+        "price": 999,
+        "title": "Laptop",
+        "qty": 2,
+        "pic": "https://www.lg.com/us/images/laptops/md06060196/gallery/1100-8.jpg"
+    }
+]

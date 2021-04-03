@@ -1,5 +1,9 @@
 .App {
   text-align: center;
+  background: linear-gradient(to top, rgba(0,0,0,0.1), rgba(0,0,0,.2)),url(https://www.komando.com/wp-content/uploads/2018/11/dreamstime_m_87808373.jpg) center no-repeat;
+  background-size: cover;
+  margin-left: 8rem;
+  height: 100vh;
 }
 
 .App-logo {

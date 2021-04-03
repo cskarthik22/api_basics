@@ -3,17 +3,11 @@ const express = require('express');
 
 /* Build a webserver using express package */
 const app = express();
-app.use(express.static("build"));
-const path = require('path');
-const { ppid } = require('process');
-ppid.get('*', (req,res) => {
-    res.sendFile(path.resolve(__dirname,'client','build','index.html'));
-});
 /* webserver listeing on port 7000 */
 var port = process.env.PORT || 8000;
 app.listen(port, display);
 /* webserver serving static html content via webbrowser */
-
+app.use(express.static("public"));
 
 /*
 var lettersdata = {
@@ -25,6 +19,8 @@ var lettersdata = {
 }
 */
 
+var data = JSON.parse(fs.readFileSync('db/letters.json'));
+
 
 
 function display(){
@@ -32,6 +28,55 @@ function display(){
 }
 
 app.get("/search", (request,response) => {response.send("What you want to search?");});
+//app.get("/search/:color", getColor);
+app.get("/all", getAllData);
+app.get("/add/:letter/:word", addData);
+app.get("/search/:letter", getData);
+
+function getColor(request, response){
+    var result = {
+        "description": "My favorite color is... " + request.params.color,
+        "result": "success"
+    }
+    response.send(result);
+    
+}
+
+function getAllData(req, res) {
+    res.send(data);
+}
+
+function addData(req, res) {
+    data[req.params.letter] = req.params.word;
+    fs.writeFile('db/letters.json',JSON.stringify(data,null,2),finished);
+    function finished() {
+        console.log("data added and saved successfully...!");
+    }
+    reply = {
+        "description": "Added " + req.params.word + " successfully..",
+        "status": "success"
+    }
+    res.send(reply);
+}
+
+
+
+function getData(req, res) {
+    var result = data[req.params.letter];
+    var reply;
+    if(result) {
+        reply = {
+            "data" : data[req.params.letter],
+            "status" : "success"
+        }
+    } else {
+        reply = {
+            "desciption" : req.params.letter + " not found in the data list",
+            "status" : "Failure"
+        }
+    }       
+    res.send(reply);
+}
 
 
 

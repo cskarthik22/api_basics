@@ -3,6 +3,7 @@ const express = require('express');
 
 /* Build a webserver using express package */
 const app = express();
+app.get("/search", (request,response) => {response.send("What you want to search?");});
 
 if(process.env.NODE_ENV == 'production') {
 
@@ -33,8 +34,6 @@ var lettersdata = {
 function display(){
     console.log("Listening....");
 }
-
-app.get("/search", (request,response) => {response.send("What you want to search?");});
 
 
 

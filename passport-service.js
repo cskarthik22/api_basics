@@ -15,6 +15,8 @@ const firebaseConfig = {
   firebase.initializeApp(firebaseConfig);
 
 passport.serializeUser((user,done)=> {
+    console.log("serialize step - ", user);
+    
     done(null,user.id);
 });
 
@@ -23,26 +25,30 @@ passport.deserializeUser((id,done) => {
     .collection('users').doc(id).get().then(user=> {
         done(null, user);
     });
-})
+});
 passport.use(new GoogleStrategy( {
     clientID: keys.googleClientID,
     clientSecret: keys.googleClientSecret,
     callbackURL: '/auth/google/callback'
 }, (accessToken, refreshToken, profile, done) => {
     firebase.firestore()
-    .collection('users').where('googleId', '==', profile.id).get().then(existingUser => {
-        if (existingUser.exists) {
-            done(null,existingUser);
-        } else {
+    .collection('users').where('googleId', '==', profile.id).limit(1).get().then(user => {
+        if (user.empty) {
             firebase.firestore()
             .collection('users').doc().set({
                   googleId: profile.id
-                }).then(() => {
-                    console.log("Document successfully written!");
-                })
-                .catch((error) => {
-                    console.error("Error writing document: ", error);
+                }).then((user) => {
+                    done(null,user);
+                    console.log("Document successfully written!", user);
                 });
+            
+        } else {
+            const data = user.docs[0].data();
+            data['id'] = user.docs[0].id;
+            console.log("Document already exists.(user1).....!", data);
+          
+           
+            done(null,data);
         }
     })
 

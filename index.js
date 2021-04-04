@@ -35,6 +35,11 @@ app.get('/auth/google/callback', passport.authenticate('google'));
 app.get('/api/current_user', (req,res) => { 
     res.send(req.user);
 })
+app.get('/api/logout',(req,res)=>{
+    req.logout();
+    res.send("logged out....");
+    console.log("logged out....")
+});
 var port = process.env.PORT || 8000;
 app.listen(port, display);
 /* webserver serving static html content via webbrowser */

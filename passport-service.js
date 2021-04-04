@@ -4,7 +4,7 @@ const keys = require('./config/keys.js');
 const firebase = require('firebase');
 require('firebase/firestore');
 const firebaseConfig = {
-    apiKey: "AIzaSyAlA0tvzahGR7fkzSbYH9RN9d3GOwpnLFA",
+    apiKey: keys.firebaseApiKey,
     authDomain: "my-cart-c18bf.firebaseapp.com",
     projectId: "my-cart-c18bf",
     storageBucket: "my-cart-c18bf.appspot.com",

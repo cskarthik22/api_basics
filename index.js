@@ -1,8 +1,21 @@
 const fs = require('fs');
 const express = require('express');
+const passport = require('passport');
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const keys = require('./config/keys.js');
+const cookieSession = require('cookie-session');
+require('./passport-service');
 
 /* Build a webserver using express package */
 const app = express();
+app.use(cookieSession({
+    maxAge: 30 * 24 * 60 * 60 * 1000,
+    keys: [keys.cookieKey]
+}))
+
+app.use(passport.initialize());
+app.use(passport.session());
+// http://www.passportjs.org/docs/google/
 
 if(process.env.NODE_ENV == 'production') {
 
@@ -12,9 +25,16 @@ if(process.env.NODE_ENV == 'production') {
         res.sendFile(path.resolve(__dirname,'client','build','index.html'));
     });
 }
-/* webserver listeing on port 7000 */
+/* webserver listeing on port 8000 */
 app.get("/search", (request,response) => {response.send("What you want to search?");});
+app.get('/auth/google', passport.authenticate('google', {
+    scope: ['profile', 'email']
+}))
 
+app.get('/auth/google/callback', passport.authenticate('google'));
+app.get('/api/current_user', (req,res) => { 
+    res.send(req.user);
+})
 var port = process.env.PORT || 8000;
 app.listen(port, display);
 /* webserver serving static html content via webbrowser */

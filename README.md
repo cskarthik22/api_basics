@@ -36,3 +36,8 @@ https://thawing-taiga-21841.herokuapp.com/ | https://git.heroku.com/thawing-taig
 git remote add heroku https://git.heroku.com/thawing-taiga-21841.git
 
 git push heroku master or main
+
+
+https://accounts.google.com/o/oauth2/v2/auth/oauthchooseaccount?response_type=code&redirect_uri=http%3A%2F%2Flocalhost%3A8000%2Fauth%2Fgoogle%2Fcallback&scope=profile%20email&client_id=830694239381-4bani9200g6c6nheobgdusd7sfadsq61.apps.googleusercontent.com&flowName=GeneralOAuthFlow
+
+http://localhost:8000/auth/google/callback?code=4%2F0AY0e-g7l44ZpJzMtU73HM3mIKtJM3DxSw6piAlLuu9CS2KdR1CisqRsnr8YOt3SpTq_D0A&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+openid&authuser=0&prompt=consent#
